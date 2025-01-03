@@ -13,16 +13,17 @@ namespace MageDefence
    {
        [SerializeField] private float moveSpeed = 5f;
        [SerializeField] private float rotationSpeed = 700f;
-       // todo add cooldown on spells
-       // and spells SO;
+       //todo get stats from SO
    
        private PlayerInput _playerInput;
+       private PlayerSpellCaster _playerSpellCaster;
        private Rigidbody _rigidbody;
    
        [Inject]
-       public void Construct(PlayerInput playerInput)
+       public void Construct(PlayerInput playerInput, PlayerSpellCaster playerSpellCaster)
        {
            _playerInput = playerInput;
+           _playerSpellCaster = playerSpellCaster;
        }
    
        private void Awake()
@@ -43,9 +44,18 @@ namespace MageDefence
            Observable.EveryUpdate()
                .Subscribe(_ => CastSpell(_playerInput.SpellInput.Value))
                .AddTo(this);
+           
+           _playerInput.SpellChange
+               .Subscribe(ChangeSpell)
+               .AddTo(this);
 
        }
-   
+
+       private void ChangeSpell(int direction)
+       {
+          _playerSpellCaster.ChangeSpell(direction); 
+       }
+
        private void Move(Vector3 direction)
        {
            if (direction != Vector3.zero)
@@ -71,7 +81,7 @@ namespace MageDefence
                return;
            }
 
-           Debug.Log("CastSpell");
+           _playerSpellCaster.CastSpell();
        }
    } 
 }

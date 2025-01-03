@@ -7,6 +7,9 @@ namespace MageDefence
     {
         public override void InstallBindings()
         {
+            //todo change Bindings
+            Container.Bind<SpellLibrary>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<PlayerSpellCaster>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerInput>().FromComponentInHierarchy().AsSingle();
         }
     }

@@ -12,11 +12,29 @@ namespace MageDefence
         
         public ReactiveProperty<Boolean> SpellInput { get; private set; } = new(false);
 
+        private readonly Subject<int> _spellChange = new Subject<int>();
+        public IObservable<int> SpellChange => _spellChange;
+
 
         private void Update()
         {
             HandleMovementInput();
             HandleSpellInput();
+            HandleSpellChangeInput();
+        }
+
+        private void HandleSpellChangeInput()
+        {
+            //todo change input
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+               _spellChange.OnNext(-1); 
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _spellChange.OnNext(1);
+            }
         }
 
         private void HandleMovementInput()
