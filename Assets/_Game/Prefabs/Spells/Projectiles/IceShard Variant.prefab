@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 4511636408228649820, guid: 921795be56d85ea4f99179c279264455,
         type: 3}
       propertyPath: m_Name
-      value: BaseProjectile Variant
+      value: IceShard Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6758890604415594277, guid: 921795be56d85ea4f99179c279264455,
         type: 3}
@@ -137,7 +137,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 242445416052805321, guid: 921795be56d85ea4f99179c279264455, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7632861154489232187, guid: 921795be56d85ea4f99179c279264455, type: 3}
     m_AddedGameObjects:

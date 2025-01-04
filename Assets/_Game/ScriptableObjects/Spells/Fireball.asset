@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   spellName: Fireball
-  damage: 15
+  damage: 25
   cooldown: 1
   projectilePrefab: {fileID: 494704241221384477, guid: f78920411ed02e2468b5aeccd42d9010,
     type: 3}
   projectileSpeed: 15
   lifetime: 10
-  description: 
+  description: Just simple Fireball

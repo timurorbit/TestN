@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc636dffa40adb44cbc3514060c4475e, type: 3}
+  m_Name: ChestEnemy
+  m_EditorClassIdentifier: 
+  enemyName: Chest
+  prefab: {fileID: 4772049687335328749, guid: e1eb9f3d81aea194dbe1b66e4071816c, type: 3}
+  health: 50
+  damage: 15
+  speed: 4
+  armor: 0.3
+  description: Mimic chest! High Damage with sharp teeth

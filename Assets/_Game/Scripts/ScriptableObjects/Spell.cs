@@ -14,7 +14,7 @@ namespace MageDefence
         public GameObject projectilePrefab;
         public float projectileSpeed;
         public float lifetime = 10f;
-    
+        //todo add aim, spread, projectiles per shot?
         [TextArea]
         public string description;
     }   

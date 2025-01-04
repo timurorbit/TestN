@@ -51,7 +51,6 @@ namespace MageDefence
 
             SpawnSpell(activeSpell);
             
-            Debug.Log(_spellLibrary.ActiveSpell.spellName);
             _cooldownTimer = _spellLibrary.ActiveSpell.cooldown;
         }
 
@@ -70,10 +69,10 @@ namespace MageDefence
                 movement.Initialize(spell.projectileSpeed);
             }
             
-            ProjectileDamageOnTouch damage = spellInstance.GetComponent<ProjectileDamageOnTouch>();
+            DamageOnTouch damage = spellInstance.GetComponent<DamageOnTouch>();
             if (damage)
             {
-                damage.Initialize(spell.damage);
+                damage.Initialize(spell.damage, true);
             }
 
             SelfDestruct destruct = spellInstance.GetComponent<SelfDestruct>();
