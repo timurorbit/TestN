@@ -5,35 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35983769-801c-42f9-881c-02a13caa809a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnCollision.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnCollision.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnTrigger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamagingImpl.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamagingImpl.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamaging.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamaging.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/InvulnerabilityHealth.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/InvulnerabilityHealth.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/TargetLocatorClosest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/TargetLocatorClosest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/IPlayerInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/IPlayerInput.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NekkiTestTask/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NekkiTestTask/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Prefabs/Characters/Enemies/BaseEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Prefabs/Characters/Enemies/BaseEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/DamageOnTouch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/DamageOnTouch.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnTrigger.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/GameInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Health.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/Health.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/IDamageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamageable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/IDamageable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamageable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/EnemyBaseMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/EnemyBaseMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/Spells/PlayerSpellCaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/Spells/PlayerSpellCaster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/SimpleEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/EnemySO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/SimpleEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/EnemySO.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerInput.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,13 +86,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="44232">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="44232" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -139,7 +119,7 @@
       <workItem from="1735891859261" duration="10215000" />
       <workItem from="1735904038536" duration="1996000" />
       <workItem from="1735984252021" duration="16460000" />
-      <workItem from="1736067217726" duration="8465000" />
+      <workItem from="1736067217726" duration="10397000" />
     </task>
     <servers />
   </component>
@@ -3496,6 +3476,19 @@
           </properties>
           <option name="timeStamp" value="559" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerController.cs</url>
+          <line>23</line>
+          <properties documentPath="Y:\UnityProjects\NekkiTestTask\Assets\_Game\Scripts\Player\PlayerController.cs" containingFunctionPresentation="Method 'Construct'">
+            <startOffsets>
+              <option value="710" />
+            </startOffsets>
+            <endOffsets>
+              <option value="737" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="561" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog>

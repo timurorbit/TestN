@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Zenject;
 
 namespace MageDefence
@@ -15,14 +12,14 @@ namespace MageDefence
        [SerializeField] private float rotationSpeed = 700f;
        //todo get stats from SO
    
-       private PlayerInput _playerInput;
+       private IPlayerInput _playerInput;
        private PlayerSpellCaster _playerSpellCaster;
        private ITargetLocator _targetLocator;
        
        private Rigidbody _rigidbody;
    
        [Inject]
-       public void Construct(PlayerInput playerInput, PlayerSpellCaster playerSpellCaster,[Inject(Id = "PlayerLocator")] ITargetLocator targetLocator)
+       public void Construct(IPlayerInput playerInput, PlayerSpellCaster playerSpellCaster,[Inject(Id = "PlayerLocator")] ITargetLocator targetLocator)
        {
            _playerInput = playerInput;
            _playerSpellCaster = playerSpellCaster;
@@ -51,7 +48,11 @@ namespace MageDefence
            _playerInput.SpellChange
                .Subscribe(ChangeSpell)
                .AddTo(this);
+       }
 
+       private void Update()
+       {
+           _playerInput.HandleInput();
        }
 
        private void ChangeSpell(int direction)

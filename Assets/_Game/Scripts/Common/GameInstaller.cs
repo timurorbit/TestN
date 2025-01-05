@@ -22,10 +22,13 @@ namespace MageDefence
                 .To<TargetLocatorClosest>()
                 .AsCached();
             
+            Container.Bind<IPlayerInput>()
+                .To<PlayerInput>()
+                .AsSingle();
+            
             //todo change Bindings
             Container.Bind<SpellLibrary>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerSpellCaster>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<PlayerInput>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

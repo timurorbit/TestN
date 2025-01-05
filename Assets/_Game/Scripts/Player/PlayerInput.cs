@@ -1,29 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
 namespace MageDefence
 {
-    public class PlayerInput : MonoBehaviour
+    public class PlayerInput : IPlayerInput
     {
-        public ReactiveProperty<Vector3> MoveDirection { get; private set; } = new(Vector3.zero);
+        public ReactiveProperty<Vector3> MoveDirection { get; } = new(Vector3.zero);
         
-        public ReactiveProperty<Boolean> SpellInput { get; private set; } = new(false);
+        public ReactiveProperty<bool> SpellInput { get; } = new(false);
 
-        private readonly Subject<int> _spellChange = new Subject<int>();
+        private readonly Subject<int> _spellChange = new();
         public IObservable<int> SpellChange => _spellChange;
 
-
-        private void Update()
-        {
-            HandleMovementInput();
-            HandleSpellInput();
-            HandleSpellChangeInput();
-        }
-
-        private void HandleSpellChangeInput()
+        public void HandleSpellChangeInput()
         {
             //todo change input
             if (Input.GetKeyDown(KeyCode.Q))
@@ -37,13 +27,13 @@ namespace MageDefence
             }
         }
 
-        private void HandleMovementInput()
+        public void HandleMovementInput()
         {
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"),0, Input.GetAxisRaw("Vertical"));
             MoveDirection.Value = input.normalized;
         }
 
-        private void HandleSpellInput()
+        public void HandleSpellInput()
         {
             SpellInput.Value = Input.GetButton("Fire1");
         }
