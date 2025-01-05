@@ -15,20 +15,25 @@ public class EnemyBaseMovement : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
     }
 
     private void Start()
     {
         InvokeRepeating(nameof(UpdateTarget), 0, targetUpdateFrequency);
     }
+    
+    public void Initialize(float enemyDataSpeed, Transform targetPosition)
+    {
+        moveSpeed = enemyDataSpeed;
+        agent.speed = moveSpeed;
+        target = targetPosition;
+    }
 
-    void UpdateTarget()
+    private void UpdateTarget()
     {
         if (target)
         {
             agent.SetDestination(target.position);
         }
     }
-    
 }

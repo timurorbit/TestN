@@ -17,13 +17,16 @@ namespace MageDefence
    
        private PlayerInput _playerInput;
        private PlayerSpellCaster _playerSpellCaster;
+       private ITargetLocator _targetLocator;
+       
        private Rigidbody _rigidbody;
    
        [Inject]
-       public void Construct(PlayerInput playerInput, PlayerSpellCaster playerSpellCaster)
+       public void Construct(PlayerInput playerInput, PlayerSpellCaster playerSpellCaster,[Inject(Id = "PlayerLocator")] ITargetLocator targetLocator)
        {
            _playerInput = playerInput;
            _playerSpellCaster = playerSpellCaster;
+           _targetLocator = targetLocator;
        }
    
        private void Awake()
@@ -82,6 +85,16 @@ namespace MageDefence
            }
 
            _playerSpellCaster.CastSpell();
+       }
+
+       private void OnEnable()
+       {
+           _targetLocator.RegisterTarget(transform);
+       }
+
+       private void OnDisable()
+       {
+           _targetLocator.UnregisterTarget(transform);
        }
    } 
 }

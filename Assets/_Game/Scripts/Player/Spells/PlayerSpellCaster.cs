@@ -69,7 +69,7 @@ namespace MageDefence
                 movement.Initialize(spell.projectileSpeed);
             }
             
-            DamageOnTouch damage = spellInstance.GetComponent<DamageOnTouch>();
+            DamageOnTrigger damage = spellInstance.GetComponent<DamageOnTrigger>();
             if (damage)
             {
                 damage.Initialize(spell.damage, true);

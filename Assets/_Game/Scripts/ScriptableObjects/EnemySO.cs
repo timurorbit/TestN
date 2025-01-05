@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Enemies/EnemyBase")]
-public class SimpleEnemy : ScriptableObject
+public class EnemySO : ScriptableObject
 {
     public string enemyName;
     public GameObject prefab;

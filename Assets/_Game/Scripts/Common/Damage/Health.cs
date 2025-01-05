@@ -1,28 +1,42 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    private float currentHealth = 100f;
+    protected float currentHealth = 100f;
     public float maxHealth = 100f;
 
     [Range(0f, 1f)] public float armor;
+
+    private Subject<Health> _onDeath = new();
+    public IObservable<Health> OnDeathObservable => _onDeath;
 
     private void Awake()
     {
         currentHealth = maxHealth;
     }
-
-    public void SetMaxHealth(float health)
+    
+    public void Initialize(float enemyDataHealth, float enemyDataArmor)
     {
+        SetMaxHealth(enemyDataHealth);
+        armor = enemyDataArmor;
+    }
+
+    private void SetMaxHealth(float health)
+    {
+        if (health <= 0)
+        {
+            Debug.Log($"Invalid max health value: {health}.");
+        }
         maxHealth = health;
         currentHealth = health;
     }
 
-    public void takeDamage(float damage)
+    public virtual void takeDamage(float damage)
     {
         var effectiveDamage = damage * (1 - armor);
         currentHealth -= effectiveDamage;
@@ -38,6 +52,9 @@ public class Health : MonoBehaviour, IDamageable
     private void Die()
     {
         Debug.Log("Died");
+        _onDeath.OnNext(this);
+        _onDeath.OnCompleted();
+        
         Destroy(gameObject);
     }
 }

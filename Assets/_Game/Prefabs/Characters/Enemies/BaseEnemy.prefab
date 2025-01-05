@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1452863425536821494}
   - component: {fileID: 519230392515172011}
   - component: {fileID: 2799488376471288781}
-  - component: {fileID: 4223052049602102208}
+  - component: {fileID: 458843826326840264}
   m_Layer: 10
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -150,9 +150,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049130908288652735}
   serializedVersion: 4
-  m_Mass: 0.5
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Mass: 15
+  m_Drag: 2
+  m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -165,7 +165,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetUpdateFrequency: 0.25
   moveSpeed: 5
---- !u!114 &4223052049602102208
+--- !u!114 &458843826326840264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,8 +229,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049130908288652735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f2d83a5ed2831d4cb23c0562048bfa3, type: 3}
+  m_Script: {fileID: 11500000, guid: 70e8aa172150401894f1a7311a0b6966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 10
   destroyOnHit: 0

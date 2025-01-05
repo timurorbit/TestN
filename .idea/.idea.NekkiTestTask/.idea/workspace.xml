@@ -5,37 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35983769-801c-42f9-881c-02a13caa809a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnCollision.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnCollision.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamagingImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamagingImpl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamaging.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamaging.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/InvulnerabilityHealth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/InvulnerabilityHealth.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/TargetLocatorClosest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/TargetLocatorClosest.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NekkiTestTask/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NekkiTestTask/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectileDamageOnTouch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectileDamageOnTouch.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectileMovement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectileMovement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGMonsterBundlePBR/CommonStuffs/Prefab/Wave01/CharacterPBR/GolemPBRDefault.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGMonsterBundlePBR/CommonStuffs/Prefab/Wave01/CharacterPBR/GolemPBRDefault.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGMonsterBundlePBR/CommonStuffs/Prefab/Wave02/CharacterPBR/ChestMonsterPBRDefault.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGMonsterBundlePBR/CommonStuffs/Prefab/Wave02/CharacterPBR/ChestMonsterPBRDefault.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGMonsterBundlePBR/RPGMonsterWave01PBR/Animators/EvilMageCusom.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGMonsterBundlePBR/RPGMonsterWave01PBR/Animators/EvilMageCusom.controller.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SelfDestruct.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SelfDestruct.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Prefabs/Spells/Projectiles/BaseProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Prefabs/Spells/Projectiles/BaseProjectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Prefabs/Spells/Projectiles/IceShard Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Prefabs/Spells/Projectiles/IceShard Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/ScriptableObjects/Spells/Fireball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/ScriptableObjects/Spells/Fireball.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/GameInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/GameInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlayerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlayerController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlayerInput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlayerInput.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlayerSpellCaster.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlayerSpellCaster.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/Spell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/Spell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/SpellLibrary.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/SpellLibrary.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Prefabs/Characters/Enemies/BaseEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Prefabs/Characters/Enemies/BaseEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/DamageOnTouch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/DamageOnTouch.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/DamageOnTrigger.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/GameInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Health.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/Health.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/IDamageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamageable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/IDamageable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Common/Damage/IDamageable.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/EnemyBaseMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/EnemyBaseMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/Spells/PlayerSpellCaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Player/Spells/PlayerSpellCaster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/SimpleEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/EnemySO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/SimpleEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/EnemySO.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,9 +47,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/EnemyBaseMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Editor/EditorStaticInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/EnemyBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/Common/DamageOnTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/ScriptableObjects/EnemySO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@3.0.31/Rider/Editor/RiderScriptEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.11.2/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -111,15 +108,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="44688">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="44688" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -143,7 +138,8 @@
       <workItem from="1735832403486" duration="1386000" />
       <workItem from="1735891859261" duration="10215000" />
       <workItem from="1735904038536" duration="1996000" />
-      <workItem from="1735984252021" duration="11015000" />
+      <workItem from="1735984252021" duration="16460000" />
+      <workItem from="1736067217726" duration="8465000" />
     </task>
     <servers />
   </component>
