@@ -6,18 +6,19 @@ using Zenject;
 
 namespace MageDefence
 {
-    [RequireComponent(typeof(SpellLibrary))]
+    
     public class PlayerSpellCaster : MonoBehaviour
     {
         public Transform spellSpawnOffset;
-        private SpellLibrary _spellLibrary;
+        private ISpellLibrary _spellLibrary;
 
         private float _cooldownTimer;
 
         [Inject]
-        public void Construct(SpellLibrary spellLibrary)
+        public void Construct(ISpellLibrary spellLibrary)
         {
             _spellLibrary = spellLibrary;
+            _spellLibrary.LoadLibrary();
         }
         private void Awake()
         {
@@ -84,7 +85,7 @@ namespace MageDefence
 
         public void ChangeSpell(int indexChange)
         {
-            _spellLibrary.ChangeSpellByIndexChange(indexChange);
+            _spellLibrary.ChangeActiveSpellByIndexChange(indexChange);
         }
     }   
 }

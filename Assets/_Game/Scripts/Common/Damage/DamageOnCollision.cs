@@ -2,6 +2,7 @@
 
 namespace MageDefence
 {
+    [RequireComponent(typeof(Collider))]
     public class DamageOnCollision : DamagingImpl
     {
         private void OnCollisionEnter(Collision other)

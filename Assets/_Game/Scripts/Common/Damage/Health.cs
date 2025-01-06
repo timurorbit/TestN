@@ -49,7 +49,7 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("Died");
         _onDeath.OnNext(this);

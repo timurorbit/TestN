@@ -1490,7 +1490,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1893538246}
-  - component: {fileID: 1893538248}
   - component: {fileID: 1893538247}
   m_Layer: 12
   m_Name: MagicWand
@@ -1527,21 +1526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellSpawnOffset: {fileID: 0}
---- !u!114 &1893538248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893538245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a1619d7bdc14aa4c9cda23e1502e05c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 11400000, guid: 9fae4275f993ee048a2133e7834c39a5, type: 2}
-  - {fileID: 11400000, guid: d1d3d4241d93b2a4487e7bc3ee6d77a6, type: 2}
 --- !u!1 &1943832452
 GameObject:
   m_ObjectHideFlags: 0

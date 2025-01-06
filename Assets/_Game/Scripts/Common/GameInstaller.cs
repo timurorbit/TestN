@@ -25,9 +25,11 @@ namespace MageDefence
             Container.Bind<IPlayerInput>()
                 .To<PlayerInput>()
                 .AsSingle();
+
+            Container.Bind<ISpellLibrary>()
+                .To<SpellLibraryResources>()
+                .AsCached();
             
-            //todo change Bindings
-            Container.Bind<SpellLibrary>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerSpellCaster>().FromComponentInHierarchy().AsSingle();
         }
     }

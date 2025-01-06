@@ -11,7 +11,7 @@ public class TargetLocatorClosest : ITargetLocator
         {
             return null; 
         }
-        if (_potentialTargets.Count == 0)
+        if (_potentialTargets.Count == 1)
         {
             return _potentialTargets[0];
         }
