@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ModestTree;
 using UnityEngine;
 
 namespace MageDefence
@@ -7,6 +8,8 @@ namespace MageDefence
     {
         public List<Spell> Spells {get; protected set; } = new();
         public Spell ActiveSpell { get; private set; }
+
+        private const string DefaultResourcePath = "ScriptableObjects/Spells/Basic";
 
         private int ActiveSpellIndex;
 
@@ -20,16 +23,24 @@ namespace MageDefence
             ActiveSpell = Spells[ActiveSpellIndex];
         }
         
-        public void LoadLibrary(string path = "ScriptableObjects/Spells/Basic")
+        public void LoadLibrary(string path)
         {
-           Spells.Clear();
-           Spell[] loadedSpells = Resources.LoadAll<Spell>(path);
-           Spells.AddRange(loadedSpells);
-           if (Spells.Count > 0)
-           {
-               ActiveSpellIndex = 0;
-               ActiveSpell = Spells[ActiveSpellIndex];
-           }
+            if (string.IsNullOrEmpty(path))
+            {
+                path = DefaultResourcePath;
+            }
+            Spells.Clear();
+            var loadedSpells = Resources.LoadAll<Spell>(path);
+            
+            
+            if (loadedSpells.Length == 0)
+            {
+                Debug.LogWarning($"No spells found at path: {path}");
+                return;
+            }
+            
+            Spells.AddRange(loadedSpells);
+            ActiveSpell = Spells[ActiveSpellIndex];
         }
     }
 }
