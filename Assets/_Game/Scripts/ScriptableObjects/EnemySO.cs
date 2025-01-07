@@ -16,7 +16,6 @@ public class EnemySO : ScriptableObject
     private void OnValidate()
     {
         health = Mathf.Clamp(health, 1f, 5000f);
-        damage = Mathf.Clamp(damage, 1f, 1000f);
-        speed = Mathf.Clamp(speed, 1f, 25f);
+        damage = Mathf.Clamp(damage, 0f, 1000f);
     }
 }

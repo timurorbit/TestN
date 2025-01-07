@@ -1,101 +1,107 @@
 using System;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace MageDefence
 {
-   [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour
-   {
-       [SerializeField] private float moveSpeed = 5f;
-       [SerializeField] private float rotationSpeed = 700f;
-       //todo get stats from SO
-   
-       private IPlayerInput _playerInput;
-       private PlayerSpellCaster _playerSpellCaster;
-       private ITargetLocator _targetLocator;
-       
-       private Rigidbody _rigidbody;
-   
-       [Inject]
-       public void Construct(IPlayerInput playerInput, PlayerSpellCaster playerSpellCaster,[Inject(Id = "PlayerLocator")] ITargetLocator targetLocator)
-       {
-           _playerInput = playerInput;
-           _playerSpellCaster = playerSpellCaster;
-           _targetLocator = targetLocator;
-       }
-   
-       private void Awake()
-       {
-           _rigidbody = GetComponent<Rigidbody>();
-       }
-   
-       private void Start()
-       {
-           Observable.EveryFixedUpdate()
-               .Subscribe(_ => Move(_playerInput.MoveDirection.Value))
-               .AddTo(this);
+    {
+        private PlayerStatsModel _playerStats;
 
-           Observable.EveryFixedUpdate()
-               .Subscribe(_ => Rotate(_playerInput.MoveDirection.Value))
-               .AddTo(this);
+        private IPlayerInput _playerInput;
+        private ITargetLocator _targetLocator;
+        private PlayerSpellCaster _playerSpellCaster;
 
-           Observable.EveryUpdate()
-               .Subscribe(_ => CastSpell(_playerInput.SpellInput.Value))
-               .AddTo(this);
-           
-           _playerInput.SpellChange
-               .Subscribe(ChangeSpell)
-               .AddTo(this);
-       }
+        private Rigidbody _rigidbody;
 
-       private void Update()
-       {
-           _playerInput.HandleInput();
-       }
+        [Inject]
+        public void Construct(IPlayerInput playerInput,
+            PlayerSpellCaster playerSpellCaster,
+            [Inject(Id = "PlayerLocator")] ITargetLocator targetLocator
+            , PlayerStatsModel playerStats)
+        {
+            _playerInput = playerInput;
+            _playerSpellCaster = playerSpellCaster;
+            _targetLocator = targetLocator;
+            _playerStats = playerStats;
+        }
 
-       private void ChangeSpell(int direction)
-       {
-          _playerSpellCaster.ChangeSpell(direction); 
-       }
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
-       private void Move(Vector3 direction)
-       {
-           if (direction != Vector3.zero)
-           {
-               Vector3 movement = direction * moveSpeed * Time.deltaTime;
-               _rigidbody.MovePosition(_rigidbody.position + movement);  
-           }
-       }
+        private void Start()
+        {
+            Observable.EveryFixedUpdate()
+                .Subscribe(_ => Move(_playerInput.MoveDirection.Value))
+                .AddTo(this);
 
-       private void Rotate(Vector3 direction)
-       {
-           if (direction != Vector3.zero)
-           {
-               Quaternion targetRotation = Quaternion.LookRotation(direction);
-               _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
-           }
-       }
+            Observable.EveryFixedUpdate()
+                .Subscribe(_ => Rotate(_playerInput.MoveDirection.Value))
+                .AddTo(this);
 
-       private void CastSpell(bool spellInputValue)
-       {
-           if (!spellInputValue)
-           {
-               return;
-           }
+            Observable.EveryUpdate()
+                .Subscribe(_ => CastSpell(_playerInput.SpellInput.Value))
+                .AddTo(this);
 
-           _playerSpellCaster.CastSpell();
-       }
+            _playerInput.SpellChange
+                .Subscribe(ChangeSpell)
+                .AddTo(this);
+        }
 
-       private void OnEnable()
-       {
-           _targetLocator.RegisterTarget(transform);
-       }
+        private void Update()
+        {
+            _playerInput.HandleInput();
+        }
 
-       private void OnDisable()
-       {
-           _targetLocator.UnregisterTarget(transform);
-       }
-   } 
+        private void ChangeSpell(int direction)
+        {
+            _playerSpellCaster.ChangeSpell(direction);
+        }
+
+        private void Move(Vector3 direction)
+        {
+            if (direction != Vector3.zero)
+            {
+                Vector3 movement = direction * (_playerStats.MoveSpeed.Value * Time.deltaTime);
+                _rigidbody.MovePosition(_rigidbody.position + movement);
+            }
+        }
+
+        private void Rotate(Vector3 direction)
+        {
+            if (direction == Vector3.zero)
+            {
+                return;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation,
+                _playerStats.RotationSpeed.Value * Time.deltaTime));
+        }
+
+        private void CastSpell(bool spellInputValue)
+        {
+            if (!spellInputValue)
+            {
+                return;
+            }
+
+            _playerSpellCaster.CastSpell();
+        }
+
+        private void OnEnable()
+        {
+            _targetLocator.RegisterTarget(transform);
+        }
+
+        private void OnDisable()
+        {
+            _targetLocator.UnregisterTarget(transform);
+        }
+    }
 }

@@ -30,6 +30,8 @@ namespace MageDefence
                 .To<SpellLibraryResources>()
                 .AsCached();
             
+            
+            
             Container.Bind<PlayerSpellCaster>().FromComponentInHierarchy().AsSingle();
         }
     }

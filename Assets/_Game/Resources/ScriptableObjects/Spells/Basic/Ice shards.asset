@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ice shards
   m_EditorClassIdentifier: 
   spellName: Ice shards
-  damage: 5
+  damage: 15
   cooldown: 0.1
   projectilePrefab: {fileID: 7317376007949088875, guid: 08a5f2d79cfbea743ab9792dd006bcd8,
     type: 3}

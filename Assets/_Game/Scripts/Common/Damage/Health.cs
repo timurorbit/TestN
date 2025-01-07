@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using MageDefence;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Health : MonoBehaviour, IDamageable
 {
@@ -12,18 +10,18 @@ public class Health : MonoBehaviour, IDamageable
 
     [Range(0f, 1f)] public float armor;
 
-    private Subject<Health> _onDeath = new();
-    public IObservable<Health> OnDeathObservable => _onDeath;
+    private Subject<IDamageable> _onDeath = new();
+    public IObservable<IDamageable> OnDeathObservable => _onDeath;
 
     private void Awake()
     {
         currentHealth = maxHealth;
     }
     
-    public void Initialize(float enemyDataHealth, float enemyDataArmor)
+    public virtual void Initialize(float dataHealth, float dataArmor)
     {
-        SetMaxHealth(enemyDataHealth);
-        armor = enemyDataArmor;
+        SetMaxHealth(dataHealth);
+        armor = dataArmor;
     }
 
     private void SetMaxHealth(float health)
@@ -38,9 +36,8 @@ public class Health : MonoBehaviour, IDamageable
 
     public virtual void takeDamage(float damage)
     {
-        var effectiveDamage = damage * (1 - armor);
+        var effectiveDamage = DamageUtils.CalculateEffectiveDamage(damage, armor);
         currentHealth -= effectiveDamage;
-        currentHealth = Mathf.Max(currentHealth, 0f);
         Debug.Log($"Took {effectiveDamage} damage. Health remaining: {currentHealth}");
 
         if (currentHealth <= 0)
@@ -56,5 +53,10 @@ public class Health : MonoBehaviour, IDamageable
         _onDeath.OnCompleted();
         
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        _onDeath.Dispose();
     }
 }

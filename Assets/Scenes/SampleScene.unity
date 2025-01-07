@@ -1255,7 +1255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 9c149f68026524c44964785102207854, type: 2}
   _monoInstallers: []
   _installerPrefabs:
   - {fileID: 807551329}
@@ -1579,8 +1580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeb692cbc8c63542930600b088fdda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  rotationSpeed: 15
 --- !u!54 &1943832455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1634,12 +1633,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1943832452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9d4abe2cd34fee89807c41290e0970, type: 3}
+  m_Script: {fileID: 11500000, guid: 242281b5b47a439692291179a7db3990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  armor: 0
-  invulnerabilityTime: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
