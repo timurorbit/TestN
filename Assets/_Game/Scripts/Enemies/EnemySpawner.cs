@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using MageDefence;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-public class EnemyWaveManager : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     public EnemySO[] enemyPool;
     public Transform[] spawnPoints;
     private List<GameObject> activeEnemies = new();
 
-    [Inject] private EnemyFactory _enemyFactory;
+    private EnemyFactory _enemyFactory;
+    private EnemySpawnerConfig _spawnerConfig;
 
     public int maxEnemies = 10;
     void Start()
@@ -42,6 +44,13 @@ public class EnemyWaveManager : MonoBehaviour
                 .Subscribe(_ => HandleEnemyDeath(health))
                 .AddTo(this);
         }
+    }
+    
+    [Inject]
+    public void Construct(EnemySpawnerConfig spawnerConfig, EnemyFactory enemyFactory)
+    {
+        _spawnerConfig = spawnerConfig;
+        _enemyFactory = enemyFactory;
     }
 
     private void HandleEnemyDeath(Health health)

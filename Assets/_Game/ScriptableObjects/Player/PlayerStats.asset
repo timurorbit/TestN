@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45fa5cec66a847f19f23b1a8993e1ae7, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  moveSpeed: 55
-  health: 15
-  armor: 0
-  rotationSpeed: 250
+  moveSpeed: 500
+  health: 15555
+  armor: 0.146
+  rotationSpeed: 15
   invulnerabilityTime: 1

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace MageDefence
 {
-    [RequireComponent(typeof(Rigidbody))]
+
     public class PlayerController : MonoBehaviour
     {
         private PlayerStatsModel _playerStats;
@@ -14,8 +14,8 @@ namespace MageDefence
         private IPlayerInput _playerInput;
         private ITargetLocator _targetLocator;
         private PlayerSpellCaster _playerSpellCaster;
-
-        private Rigidbody _rigidbody;
+        
+        private CharacterController _characterController;
 
         [Inject]
         public void Construct(IPlayerInput playerInput,
@@ -31,7 +31,7 @@ namespace MageDefence
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            _characterController = GetComponent<CharacterController>();
         }
 
         private void Start()
@@ -68,7 +68,7 @@ namespace MageDefence
             if (direction != Vector3.zero)
             {
                 Vector3 movement = direction * (_playerStats.MoveSpeed.Value * Time.deltaTime);
-                _rigidbody.MovePosition(_rigidbody.position + movement);
+                _characterController.SimpleMove(movement);
             }
         }
 
@@ -80,7 +80,7 @@ namespace MageDefence
             }
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, targetRotation,
+            transform.rotation = (Quaternion.Slerp(transform.rotation, targetRotation,
                 _playerStats.RotationSpeed.Value * Time.deltaTime));
         }
 
