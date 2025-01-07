@@ -1,11 +1,13 @@
-using MageDefence;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-public class DamageOnTrigger : DamagingImpl
+namespace MageDefence
 {
-    private  void OnTriggerEnter(Collider other)
+    [RequireComponent(typeof(Collider))]
+    public class DamageOnTrigger : DamagingImpl
     {
-        ApplyDamage(other.gameObject);
+        private void OnTriggerEnter(Collider other)
+        {
+            ApplyDamage(other.gameObject);
+        }
     }
 }

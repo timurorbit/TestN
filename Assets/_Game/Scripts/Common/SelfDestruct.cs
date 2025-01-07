@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SelfDestruct : MonoBehaviour
+namespace MageDefence
 {
-    public float lifetime = 5f;
-
-    public void Initialize(float spellLifetime)
+    public class SelfDestruct : MonoBehaviour
     {
-        lifetime = spellLifetime;
-        Destroy(gameObject, lifetime);
-    }
+        public float lifetime = 5f;
+
+        public void Initialize(float spellLifetime)
+        {
+            lifetime = spellLifetime;
+            Destroy(gameObject, lifetime);
+        }
+    }  
 }

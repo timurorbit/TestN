@@ -1,36 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MageDefence;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public EnemySO[] enemyPool;
+    [SerializeField]
+    private List<EnemySO> enemyPool;
     public Transform[] spawnPoints;
     private List<GameObject> activeEnemies = new();
 
     private EnemyFactory _enemyFactory;
     private EnemySpawnerConfig _spawnerConfig;
-
-    public int maxEnemies = 10;
     void Start()
     {
-        for (int i = 0; i < maxEnemies; i++)
+        for (int i = 0; i < _spawnerConfig.MaxEnemies; i++)
         {
             SpawnEnemy();
         }
     }
 
+    private void Awake()
+    {
+        enemyPool = _spawnerConfig.EnemyPool;
+    }
+
     private void SpawnEnemy()
     {
-        if (activeEnemies.Count >= maxEnemies)
+        if (activeEnemies.Count >= _spawnerConfig.MaxEnemies)
         {
             return;
         }
 
-        EnemySO enemyData = enemyPool[Random.Range(0, enemyPool.Length)];
+        EnemySO enemyData = enemyPool[Random.Range(0, enemyPool.Count)];
         GameObject enemy = _enemyFactory.Create(enemyData);
         enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         

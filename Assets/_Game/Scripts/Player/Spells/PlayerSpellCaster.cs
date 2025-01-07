@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace MageDefence
 {
-    
     public class PlayerSpellCaster : MonoBehaviour
     {
         public Transform spellSpawnOffset;
@@ -20,6 +16,7 @@ namespace MageDefence
             _spellLibrary = spellLibrary;
             _spellLibrary.LoadLibrary();
         }
+
         private void Awake()
         {
             if (spellSpawnOffset == null)
@@ -51,7 +48,7 @@ namespace MageDefence
             Spell activeSpell = _spellLibrary.ActiveSpell;
 
             SpawnSpell(activeSpell);
-            
+
             _cooldownTimer = _spellLibrary.ActiveSpell.cooldown;
         }
 
@@ -60,16 +57,17 @@ namespace MageDefence
             if (!spell || !spell.projectilePrefab)
             {
                 return;
-            } 
-            
-            var spellInstance = Instantiate(spell.projectilePrefab, spellSpawnOffset.position, spellSpawnOffset.rotation);
-            
+            }
+
+            var spellInstance =
+                Instantiate(spell.projectilePrefab, spellSpawnOffset.position, spellSpawnOffset.rotation);
+
             ProjectileMovement movement = spellInstance.GetComponent<ProjectileMovement>();
             if (movement)
             {
                 movement.Initialize(spell.projectileSpeed);
             }
-            
+
             DamageOnTrigger damage = spellInstance.GetComponent<DamageOnTrigger>();
             if (damage)
             {
@@ -87,5 +85,5 @@ namespace MageDefence
         {
             _spellLibrary.ChangeActiveSpellByIndexChange(indexChange);
         }
-    }   
+    }
 }

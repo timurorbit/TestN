@@ -19,10 +19,10 @@ namespace MageDefence
             if (damageable != null)
             {
                 damageable.takeDamage(damage);
-                if (destroyOnHit)
-                {
-                    Destroy(gameObject);
-                }
+            }
+            if (destroyOnHit)
+            {
+                Destroy(gameObject);
             }
         } 
     }

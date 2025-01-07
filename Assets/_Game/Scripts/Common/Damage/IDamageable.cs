@@ -1,6 +1,9 @@
-﻿public interface IDamageable
+﻿namespace MageDefence
 {
-    void takeDamage(float damage);
+    public interface IDamageable
+    {
+        void takeDamage(float damage);
 
-    void Die();
+        void Die();
+    }
 }
