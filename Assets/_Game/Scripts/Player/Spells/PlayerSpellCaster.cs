@@ -5,7 +5,8 @@ namespace MageDefence
 {
     public class PlayerSpellCaster : MonoBehaviour
     {
-        public Transform spellSpawnOffset;
+        [SerializeField]
+        private Transform _spellSpawnOffset;
         private ISpellLibrary _spellLibrary;
 
         private float _cooldownTimer;
@@ -19,9 +20,9 @@ namespace MageDefence
 
         private void Awake()
         {
-            if (spellSpawnOffset == null)
+            if (!_spellSpawnOffset)
             {
-                spellSpawnOffset = transform;
+                _spellSpawnOffset = transform;
             }
         }
 
@@ -52,6 +53,7 @@ namespace MageDefence
             _cooldownTimer = _spellLibrary.ActiveSpell.cooldown;
         }
 
+        //todo Pooling
         private void SpawnSpell(Spell spell)
         {
             if (!spell || !spell.projectilePrefab)
@@ -60,7 +62,7 @@ namespace MageDefence
             }
 
             var spellInstance =
-                Instantiate(spell.projectilePrefab, spellSpawnOffset.position, spellSpawnOffset.rotation);
+                Instantiate(spell.projectilePrefab, _spellSpawnOffset.position, _spellSpawnOffset.rotation);
 
             ProjectileMovement movement = spellInstance.GetComponent<ProjectileMovement>();
             if (movement)

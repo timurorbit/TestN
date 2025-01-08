@@ -3,18 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ProjectileMovement : MonoBehaviour
 {
-    public float speed;
+    private float _speed;
     private Rigidbody _rb;
     
     public void Initialize(float spellSpeed)
     {
-        speed = spellSpeed;
+        _speed = spellSpeed;
         _rb = GetComponent<Rigidbody>();
-        _rb.velocity = transform.forward * speed;
+        _rb.velocity = transform.forward * _speed;
     }
 
     public void SetDirection(Vector3 dir)
     {
-        _rb.velocity = dir * speed;
+        _rb.velocity = dir * _speed;
     }
 }

@@ -11,10 +11,10 @@ namespace MageDefence
         private bool isInvulnerable;
         private PlayerStatsModel playerStatsModel;
 
-        private Subject<IDamageable> _onDeath = new();
+        private readonly Subject<IDamageable> _onDeath = new();
         public IObservable<IDamageable> OnDeathObservable => _onDeath;
 
-        public void takeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             if (isInvulnerable)
             {

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using Zenject;
 
 namespace MageDefence
@@ -8,8 +6,10 @@ namespace MageDefence
     [CreateAssetMenu(fileName = "PlayerStatsInstaller", menuName = "GameStatsInstaller")]
     public class StatsInstaller : ScriptableObjectInstaller<StatsInstaller>
     {
-        public PlayerStats playerConfig;
-        public EnemySpawnerConfig enemySpawnerConfig;
+        [SerializeField]
+        private PlayerStats playerConfig;
+        [SerializeField]
+        private EnemySpawnerConfig enemySpawnerConfig;
 
         public override void InstallBindings()
         {

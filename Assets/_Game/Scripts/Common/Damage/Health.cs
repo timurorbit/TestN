@@ -6,8 +6,8 @@ namespace MageDefence
 {
     public class Health : MonoBehaviour, IDamageable
     {
-        protected float currentHealth = 100f;
-        public float maxHealth = 100f;
+        private float currentHealth = 100f;
+        private float maxHealth = 100f;
 
         [Range(0f, 1f)] public float armor;
 
@@ -36,7 +36,7 @@ namespace MageDefence
             currentHealth = health;
         }
 
-        public virtual void takeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
             var effectiveDamage = DamageUtils.CalculateEffectiveDamage(damage, armor);
             currentHealth -= effectiveDamage;

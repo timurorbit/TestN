@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using MageDefence;
 using UniRx;
@@ -9,38 +7,36 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private List<EnemySO> enemyPool;
-    public Transform[] spawnPoints;
-    private List<GameObject> activeEnemies = new();
+    [SerializeField] private List<EnemySO> _enemyPool;
+
+    [SerializeField] private Transform[] _spawnPoints;
+    private readonly List<GameObject> _activeEnemies = new();
 
     private EnemyFactory _enemyFactory;
     private EnemySpawnerConfig _spawnerConfig;
+
     void Start()
     {
+        _enemyPool = _spawnerConfig.EnemyPool;
         for (int i = 0; i < _spawnerConfig.MaxEnemies; i++)
         {
             SpawnEnemy();
         }
     }
 
-    private void Awake()
-    {
-        enemyPool = _spawnerConfig.EnemyPool;
-    }
-
+    //todo Pooling
     private void SpawnEnemy()
     {
-        if (activeEnemies.Count >= _spawnerConfig.MaxEnemies)
+        if (_activeEnemies.Count >= _spawnerConfig.MaxEnemies)
         {
             return;
         }
 
-        EnemySO enemyData = enemyPool[Random.Range(0, enemyPool.Count)];
+        EnemySO enemyData = _enemyPool[Random.Range(0, _enemyPool.Count)];
         GameObject enemy = _enemyFactory.Create(enemyData);
-        enemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
-        
-        activeEnemies.Add(enemy);
+        enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
+
+        _activeEnemies.Add(enemy);
 
         var health = enemy.GetComponent<Health>();
         if (health)
@@ -51,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
                 .AddTo(this);
         }
     }
-    
+
     [Inject]
     public void Construct(EnemySpawnerConfig spawnerConfig, EnemyFactory enemyFactory)
     {
@@ -61,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void HandleEnemyDeath(Health health)
     {
-        activeEnemies.Remove(health.gameObject);
+        _activeEnemies.Remove(health.gameObject);
         SpawnEnemy();
     }
 }

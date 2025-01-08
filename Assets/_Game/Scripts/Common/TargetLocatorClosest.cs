@@ -5,7 +5,7 @@ namespace MageDefence
 {
    public class TargetLocatorClosest : ITargetLocator
    {
-       private List<Transform> _potentialTargets = new();
+       private readonly List<Transform> _potentialTargets = new();
        public Transform GetTarget(Vector3 enemyPosition)
        {
            if (_potentialTargets.Count == 0)

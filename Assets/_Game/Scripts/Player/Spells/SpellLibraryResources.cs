@@ -5,7 +5,7 @@ namespace MageDefence
 {
     public class SpellLibraryResources : ISpellLibrary
     {
-        public List<Spell> Spells {get; protected set; } = new();
+        public List<Spell> Spells {get; } = new();
         public Spell ActiveSpell { get; private set; }
 
         private const string DefaultResourcePath = "ScriptableObjects/Spells/Basic";

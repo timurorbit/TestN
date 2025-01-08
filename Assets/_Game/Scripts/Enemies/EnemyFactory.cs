@@ -5,8 +5,7 @@ namespace MageDefence
 {
     public class EnemyFactory : PlaceholderFactory<EnemySO, GameObject>
     {
-    
-        readonly DiContainer _container;
+        private readonly DiContainer _container;
     
         private readonly ITargetLocator _targetLocator;
 
@@ -19,7 +18,7 @@ namespace MageDefence
         {
             GameObject enemyInstance = _container.InstantiatePrefab(enemySoData.prefab);
 
-            var movement = enemyInstance.GetComponent<EnemyBaseMovement>();
+            var movement = enemyInstance.GetComponent<EnemyMovement>();
             if (movement)
             {
                 Transform target = _targetLocator.GetTarget(enemyInstance.transform.position);

@@ -7,15 +7,15 @@ namespace MageDefence
     public class PlayerStatsModel
     {
         [Header("In Game Stats")]
-        public ReactiveProperty<float> MoveSpeed;
+        public readonly ReactiveProperty<float> MoveSpeed;
         
-        public ReactiveProperty<float> Health;
+        public readonly ReactiveProperty<float> Health;
 
-        public ReactiveProperty<float> Armor;
+        public readonly ReactiveProperty<float> Armor;
 
-        public ReactiveProperty<float> RotationSpeed;
+        public readonly ReactiveProperty<float> RotationSpeed;
 
-        public ReactiveProperty<float> InvulnerabilityTime;
+        public readonly ReactiveProperty<float> InvulnerabilityTime;
 
         private readonly PlayerStats _playerStats;
 
@@ -23,11 +23,6 @@ namespace MageDefence
         public PlayerStatsModel(PlayerStats playerStats)
         {
             _playerStats = playerStats;
-            Initialize();
-        }
-        
-        private void Initialize()
-        {
             MoveSpeed = new ReactiveProperty<float>(_playerStats.moveSpeed);
             Health = new ReactiveProperty<float>(_playerStats.health);
             Armor = new ReactiveProperty<float>(_playerStats.armor);
