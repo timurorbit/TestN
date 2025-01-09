@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +16,6 @@ namespace MageDefence
         public void Construct(ISpellLibrary spellLibrary)
         {
             _spellLibrary = spellLibrary;
-            _spellLibrary.LoadLibrary();
         }
 
         private void Awake()
@@ -24,6 +24,11 @@ namespace MageDefence
             {
                 _spellSpawnOffset = transform;
             }
+        }
+
+        private void Start()
+        {
+            _spellLibrary.LoadLibrary();
         }
 
         private void Update()

@@ -1,3 +1,4 @@
+using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -31,21 +32,24 @@ namespace MageDefence
         public void Construct(PlayerStatsModel playerStatsModel)
         {
             _playerStatsModel = playerStatsModel;
-        
-            _moveSpeed = playerStatsModel.MoveSpeed.Value;
-            _health = playerStatsModel.Health.Value;
-            _armor = playerStatsModel.Armor.Value;
-            _rotationSpeed = playerStatsModel.RotationSpeed.Value;
-            _invulnerabilityTime = playerStatsModel.InvulnerabilityTime.Value;
-        
+        }
+
+        private void Start()
+        {
+            _moveSpeed = _playerStatsModel.MoveSpeed.Value;
+            _health = _playerStatsModel.Health.Value;
+            _armor = _playerStatsModel.Armor.Value;
+            _rotationSpeed = _playerStatsModel.RotationSpeed.Value;
+            _invulnerabilityTime = _playerStatsModel.InvulnerabilityTime.Value; 
+            
             _playerStatsModel.MoveSpeed.Subscribe(x => _moveSpeed = x).AddTo(this);
             _playerStatsModel.Health.Subscribe(x => _health = x).AddTo(this);
             _playerStatsModel.Armor.Subscribe(x => _armor = x).AddTo(this);
             _playerStatsModel.RotationSpeed.Subscribe(x => _rotationSpeed = x).AddTo(this);
             _playerStatsModel.InvulnerabilityTime.Subscribe(x => _invulnerabilityTime = x).AddTo(this);
         }
-    
-    
+
+
         public void UpdateStats()
         {
             if (_playerStatsModel == null)

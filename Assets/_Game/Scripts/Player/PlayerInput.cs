@@ -15,13 +15,12 @@ namespace MageDefence
 
         public void HandleSpellChangeInput()
         {
-            //todo change input
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetButtonDown("Previous"))
             {
                _spellChange.OnNext(-1); 
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Next"))
             {
                 _spellChange.OnNext(1);
             }

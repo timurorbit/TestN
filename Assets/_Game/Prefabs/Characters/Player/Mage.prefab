@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeb692cbc8c63542930600b088fdda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerSpellCaster: {fileID: 2516498832157253520}
 --- !u!114 &3296873708304066351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ac0b2d2a8fa2e469ce94565834fa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellSpawnOffset: {fileID: 0}
+  _spellSpawnOffset: {fileID: 0}
 --- !u!1001 &3505541634784903926
 PrefabInstance:
   m_ObjectHideFlags: 0

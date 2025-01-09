@@ -4,25 +4,22 @@ using Zenject;
 
 namespace MageDefence
 {
-
     public class PlayerController : MonoBehaviour
     {
         private PlayerStatsModel _playerStats;
 
         private IPlayerInput _playerInput;
         private ITargetLocator _targetLocator;
-        private PlayerSpellCaster _playerSpellCaster;
-        
         private CharacterController _characterController;
+        
+        [SerializeField] private PlayerSpellCaster _playerSpellCaster;
 
         [Inject]
         public void Construct(IPlayerInput playerInput,
-            PlayerSpellCaster playerSpellCaster,
             [Inject(Id = "PlayerLocator")] ITargetLocator targetLocator
             , PlayerStatsModel playerStats)
         {
             _playerInput = playerInput;
-            _playerSpellCaster = playerSpellCaster;
             _targetLocator = targetLocator;
             _playerStats = playerStats;
         }
@@ -58,6 +55,10 @@ namespace MageDefence
 
         private void ChangeSpell(int direction)
         {
+            if (!_playerSpellCaster)
+            {
+                return;
+            }
             _playerSpellCaster.ChangeSpell(direction);
         }
 
@@ -84,7 +85,7 @@ namespace MageDefence
 
         private void CastSpell(bool spellInputValue)
         {
-            if (!spellInputValue)
+            if (!spellInputValue || !_playerSpellCaster)
             {
                 return;
             }

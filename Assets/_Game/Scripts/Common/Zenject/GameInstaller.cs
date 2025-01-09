@@ -29,10 +29,6 @@ namespace MageDefence
             Container.Bind<ISpellLibrary>()
                 .To<SpellLibraryResources>()
                 .AsCached();
-            
-            
-            
-            Container.Bind<PlayerSpellCaster>().FromComponentInHierarchy().AsSingle();
         }
     }
 }
