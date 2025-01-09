@@ -66,6 +66,8 @@ To create a new scene:
 ### Enhancements
 - **Object Pooling**: For spells and enemies to improve performance.
 - **ScriptableObject Validation**: Ensure data consistency for player and enemy stats.
+- **Review Collision Matrix**: proper collision matrix
+- **Fix NavMesh Navigation Layers**: navigation settings for agents 
 - **Optimization**: Resolve boxing/unboxing issues (e.g., in `PlayerStatsUI.Start()`).
 - **Logic Refinement**: Combine `Health` and `PlayerHealth` scripts.
 - **Addressables**: Implement addressables for spells and enemies to simplify updates and additions.
