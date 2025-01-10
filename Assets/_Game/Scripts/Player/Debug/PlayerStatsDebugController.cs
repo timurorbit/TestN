@@ -36,6 +36,12 @@ namespace MageDefence
 
         private void Start()
         {
+            if (_playerStatsModel == null)
+            {
+                Debug.LogError("PlayerStatsModel is null");
+                return;
+            }
+            
             _moveSpeed = _playerStatsModel.MoveSpeed.Value;
             _health = _playerStatsModel.Health.Value;
             _armor = _playerStatsModel.Armor.Value;

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -25,6 +26,15 @@ namespace MageDefence
         public void Construct(PlayerStatsModel playerStatsModel)
         {
             _playerStatsModel = playerStatsModel;
+        }
+
+        private void Start()
+        {
+            if (_playerStatsModel == null)
+            {
+                Debug.LogWarning("PlayerStatsModel is nulL");
+                return;
+            }
             
             _playerStatsModel.MoveSpeed
                 .Subscribe(value => moveSpeedText.text = $"Move Speed: {value:F1}")

@@ -20,23 +20,43 @@ namespace MageDefence
         private readonly PlayerStats _playerStats;
 
         [Inject]
-        public PlayerStatsModel(PlayerStats playerStats)
+        public PlayerStatsModel([Inject(Optional = true)]PlayerStats playerStats)
         {
             _playerStats = playerStats;
-            MoveSpeed = new ReactiveProperty<float>(_playerStats.moveSpeed);
-            Health = new ReactiveProperty<float>(_playerStats.health);
-            Armor = new ReactiveProperty<float>(_playerStats.armor);
-            RotationSpeed = new ReactiveProperty<float>(_playerStats.rotationSpeed);
-            InvulnerabilityTime = new ReactiveProperty<float>(_playerStats.invulnerabilityTime);
+            if (!_playerStats)
+            {
+                Debug.LogWarning("PlayerStats not set, using default player stats");
+            }
+            MoveSpeed = new ReactiveProperty<float>();
+            Health = new ReactiveProperty<float>();
+            Armor = new ReactiveProperty<float>();
+            RotationSpeed = new ReactiveProperty<float>();
+            InvulnerabilityTime = new ReactiveProperty<float>();
+            ResetToBase();
         }
 
         public void ResetToBase()
         {
+            if (!_playerStats)
+            {
+                ResetToDefaults();
+                return;
+            }
+            
             MoveSpeed.Value = _playerStats.moveSpeed;
             Health.Value = _playerStats.health;
             Armor.Value = _playerStats.armor;
             RotationSpeed.Value = _playerStats.rotationSpeed;
             InvulnerabilityTime.Value = _playerStats.invulnerabilityTime;
+        }
+
+        private void ResetToDefaults()
+        {
+            MoveSpeed.Value = 800f;
+            Health.Value = 100f;
+            Armor.Value = 0f;
+            RotationSpeed.Value = 15f;
+            InvulnerabilityTime.Value = 1f;
         }
     }
 }

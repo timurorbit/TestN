@@ -6,6 +6,7 @@ namespace MageDefence
 {
     public class PlayerController : MonoBehaviour
     {
+        [Inject]
         private PlayerStatsModel _playerStats;
 
         private IPlayerInput _playerInput;
@@ -17,11 +18,10 @@ namespace MageDefence
         [Inject]
         public void Construct(IPlayerInput playerInput,
             [Inject(Id = "PlayerLocator")] ITargetLocator targetLocator
-            , PlayerStatsModel playerStats)
+            )
         {
             _playerInput = playerInput;
             _targetLocator = targetLocator;
-            _playerStats = playerStats;
         }
 
         private void Awake()
@@ -31,6 +31,11 @@ namespace MageDefence
 
         private void Start()
         {
+            if (_playerInput == null)
+            {
+                Debug.LogError("PlayerInput is null, please add it in Zenject Installation");
+                return;
+            }
             Observable.EveryFixedUpdate()
                 .Subscribe(_ => Move(_playerInput.MoveDirection.Value))
                 .AddTo(this);
@@ -50,7 +55,7 @@ namespace MageDefence
 
         private void Update()
         {
-            _playerInput.HandleInput();
+            _playerInput?.HandleInput();
         }
 
         private void ChangeSpell(int direction)
@@ -95,12 +100,12 @@ namespace MageDefence
 
         private void OnEnable()
         {
-            _targetLocator.RegisterTarget(transform);
+            _targetLocator?.RegisterTarget(transform);
         }
 
         private void OnDisable()
         {
-            _targetLocator.UnregisterTarget(transform);
+            _targetLocator?.UnregisterTarget(transform);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace MageDefence
     {
         public override void InstallBindings()
         {
+            Container.Bind<PlayerStatsModel>().AsSingle();
 
             Container.BindFactory<EnemySO, GameObject, EnemyFactory>()
                 .To<GameObject>()

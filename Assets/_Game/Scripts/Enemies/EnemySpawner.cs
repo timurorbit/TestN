@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using MageDefence;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -11,14 +13,35 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Transform[] _spawnPoints;
     private readonly List<GameObject> _activeEnemies = new();
+    [FormerlySerializedAs("maxEnemies")] [SerializeField]
+    private int _maxEnemies;
 
     private EnemyFactory _enemyFactory;
     private EnemySpawnerConfig _spawnerConfig;
+    
+    [Inject]
+    public void Construct([Inject(Optional = true)]EnemySpawnerConfig spawnerConfig, EnemyFactory enemyFactory)
+    {
+        _spawnerConfig = spawnerConfig;
+        _enemyFactory = enemyFactory;
+    }
+
+    private void Awake()
+    {
+        if (!_spawnerConfig)
+        {
+            Debug.LogWarning("SpawnerConfig is missing in the scene");
+        }
+    }
 
     void Start()
     {
-        _enemyPool = _spawnerConfig.EnemyPool;
-        for (int i = 0; i < _spawnerConfig.MaxEnemies; i++)
+        if (_spawnerConfig)
+        {
+            _enemyPool = _spawnerConfig.EnemyPool;
+            _maxEnemies = _spawnerConfig.MaxEnemies;
+        }
+        for (int i = 0; i < _maxEnemies; i++)
         {
             SpawnEnemy();
         }
@@ -27,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
     //todo Pooling
     private void SpawnEnemy()
     {
-        if (_activeEnemies.Count >= _spawnerConfig.MaxEnemies)
+        if (_activeEnemies.Count >= _maxEnemies)
         {
             return;
         }
@@ -46,13 +69,6 @@ public class EnemySpawner : MonoBehaviour
                 .Subscribe(_ => HandleEnemyDeath(health))
                 .AddTo(this);
         }
-    }
-
-    [Inject]
-    public void Construct(EnemySpawnerConfig spawnerConfig, EnemyFactory enemyFactory)
-    {
-        _spawnerConfig = spawnerConfig;
-        _enemyFactory = enemyFactory;
     }
 
     private void HandleEnemyDeath(Health health)

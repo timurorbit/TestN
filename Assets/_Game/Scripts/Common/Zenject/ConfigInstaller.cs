@@ -14,7 +14,6 @@ namespace MageDefence
         public override void InstallBindings()
         {
             Container.Bind<PlayerStats>().FromInstance(playerConfig).AsSingle();
-            Container.Bind<PlayerStatsModel>().AsSingle();
             Container.Bind<EnemySpawnerConfig>().FromInstance(enemySpawnerConfig).AsSingle();
         }
     }

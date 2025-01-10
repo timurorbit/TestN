@@ -4,12 +4,12 @@ namespace MageDefence
 {
     public class SelfDestruct : MonoBehaviour
     {
-        public float lifetime = 5f;
+        private float _lifetime = 5f;
 
-        public void Initialize(float spellLifetime)
+        public void Initialize(float lifetime)
         {
-            lifetime = spellLifetime;
-            Destroy(gameObject, lifetime);
+            _lifetime = lifetime;
+            Destroy(gameObject, _lifetime);
         }
     }  
 }
