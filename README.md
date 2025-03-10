@@ -1,6 +1,6 @@
 # MageDefence Unity Project
 
-MageDefence is a Unity-based test project developed as part of a test task for Nekki. The concept is simple: a mage defends against monsters. The project emphasizes good programming practices and production-ready code, focusing on extensibility and maintainability.
+MageDefence is a Unity-based test project developed as part of a test task. The concept is simple: a mage defends against monsters. The project emphasizes good programming practices and production-ready code, focusing on extensibility and maintainability.
 ![image](https://github.com/user-attachments/assets/c13c3012-7e79-49a5-a358-b12d9b9d4132)
 
 ---
