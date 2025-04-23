@@ -1,40 +1,12 @@
-using System;
-using UniRx;
-using UnityEngine;
-
 namespace MageDefence
 {
-    public class PlayerInput : IPlayerInput
+    public class PlayerInput : PlayerInputUnityBase
     {
-        public ReactiveProperty<Vector3> MoveDirection { get; } = new(Vector3.zero);
-        
-        public ReactiveProperty<bool> SpellInput { get; } = new(false);
-
-        private readonly Subject<int> _spellChange = new();
-        public IObservable<int> SpellChange => _spellChange;
-
-        public void HandleSpellChangeInput()
+        public override void HandleInput()
         {
-            if (Input.GetButtonDown("Previous"))
-            {
-               _spellChange.OnNext(-1); 
-            }
-
-            if (Input.GetButtonDown("Next"))
-            {
-                _spellChange.OnNext(1);
-            }
-        }
-
-        public void HandleMovementInput()
-        {
-            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"),0, Input.GetAxisRaw("Vertical"));
-            MoveDirection.Value = input.normalized;
-        }
-
-        public void HandleSpellInput()
-        {
-            SpellInput.Value = Input.GetButton("Fire1");
+            HandleMovementInput();
+            HandleSpellChangeInput();
+            HandleSpellInput();
         }
     }  
 }

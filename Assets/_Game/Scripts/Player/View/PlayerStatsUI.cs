@@ -32,7 +32,7 @@ namespace MageDefence
         {
             if (_playerStatsModel == null)
             {
-                Debug.LogWarning("PlayerStatsModel is nulL");
+                Debug.LogError("PlayerStatsModel is nulL");
                 return;
             }
             

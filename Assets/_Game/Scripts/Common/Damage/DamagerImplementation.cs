@@ -2,7 +2,7 @@
 
 namespace MageDefence
 {
-    public abstract class DamagingImpl : MonoBehaviour, IDamaging
+    public abstract class DamagerImplementation : MonoBehaviour, IDamager
     {
         [SerializeField] protected float damage = 10;
         private bool _destroyOnHit;
@@ -13,12 +13,11 @@ namespace MageDefence
             _destroyOnHit = destroyOnHit;
         }
 
-        public void ApplyDamage(GameObject target)
+        public void ApplyDamage(IDamageable target)
         {
-            var damageable = target.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (target != null)
             {
-                damageable.TakeDamage(damage);
+                target.TakeDamage(damage);
             }
             if (_destroyOnHit)
             {

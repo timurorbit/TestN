@@ -18,7 +18,21 @@ namespace MageDefence
            }
            return GetClosestTarget(enemyPosition);
        }
-   
+
+       public void RegisterTarget(Transform target)
+       {
+           if (!_potentialTargets.Contains(target))
+           {
+               _potentialTargets.Add(target);
+           }
+       }
+
+       public void UnregisterTarget(Transform target)
+       {
+           _potentialTargets.Remove(target);
+       }
+
+       //TODO sqrMagnitude for distance calculation
        private Transform GetClosestTarget(Vector3 enemyPosition)
        {
            Transform closest = null;
@@ -37,19 +51,6 @@ namespace MageDefence
            }
    
            return closest;
-       }
-   
-       public void RegisterTarget(Transform target)
-       {
-           if (!_potentialTargets.Contains(target))
-           {
-               _potentialTargets.Add(target);
-           }
-       }
-   
-       public void UnregisterTarget(Transform target)
-       {
-           _potentialTargets.Remove(target);
        }
    } 
 }

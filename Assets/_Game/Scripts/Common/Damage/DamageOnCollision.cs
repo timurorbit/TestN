@@ -3,16 +3,22 @@
 namespace MageDefence
 {
     [RequireComponent(typeof(Collider))]
-    public class DamageOnCollision : DamagingImpl
+    public class DamageOnCollision : DamagerImplementation
     {
         private void OnCollisionEnter(Collision other)
         {
-            ApplyDamage(other.gameObject);
+            if (other.gameObject.TryGetComponent<IDamageable>(out var damageable))
+            {
+                ApplyDamage(damageable);
+            }
         }
 
         private void OnCollisionStay(Collision other)
         {
-            ApplyDamage(other.gameObject);
+            if (other.gameObject.TryGetComponent<IDamageable>(out var damageable))
+            {
+                ApplyDamage(damageable);
+            }
         }
     }
 }

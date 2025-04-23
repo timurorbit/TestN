@@ -49,7 +49,7 @@ namespace MageDefence
             isInvulnerable = false;
         }
 
-        public void Die()
+        private void Die()
         {
             Debug.Log("Player Died");
             _onDeath.OnNext(this);

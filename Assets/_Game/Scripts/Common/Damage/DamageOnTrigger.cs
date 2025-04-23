@@ -3,11 +3,12 @@ using UnityEngine;
 namespace MageDefence
 {
     [RequireComponent(typeof(Collider))]
-    public class DamageOnTrigger : DamagingImpl
+    public class DamageOnTrigger : DamagerImplementation
     {
         private void OnTriggerEnter(Collider other)
         {
-            ApplyDamage(other.gameObject);
+            other.gameObject.TryGetComponent<IDamageable>(out var damageable);
+            ApplyDamage(damageable);
         }
     }
 }

@@ -9,10 +9,6 @@ namespace MageDefence
         {
             Container.Bind<PlayerStatsModel>().AsSingle();
 
-            Container.BindFactory<EnemySO, GameObject, EnemyFactory>()
-                .To<GameObject>()
-                .FromFactory<EnemyFactory>();
-
             Container.Bind<ITargetLocator>()
                 .WithId("PlayerLocator")
                 .To<TargetLocatorClosest>()
@@ -26,6 +22,10 @@ namespace MageDefence
             Container.Bind<IPlayerInput>()
                 .To<PlayerInput>()
                 .AsSingle();
+            
+            Container.Bind<IResourceLoader>()
+                .To<ResourceLoaderImplementation>()
+                .AsCached();
 
             Container.Bind<ISpellLibrary>()
                 .To<SpellLibraryResources>()

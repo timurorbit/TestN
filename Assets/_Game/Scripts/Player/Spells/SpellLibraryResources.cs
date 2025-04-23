@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace MageDefence
 {
@@ -8,9 +9,20 @@ namespace MageDefence
         public List<Spell> Spells {get; } = new();
         public Spell ActiveSpell { get; private set; }
 
-        private const string DefaultResourcePath = "ScriptableObjects/Spells/Basic";
+        private IResourceLoader _resourceLoader;
 
         private int ActiveSpellIndex;
+
+        public SpellLibraryResources(IResourceLoader resourceLoader)
+        {
+            this._resourceLoader = resourceLoader;
+        }
+        
+        [Inject]
+        public void Construct(IResourceLoader iResourceLoader)
+        {
+            this._resourceLoader = iResourceLoader;
+        }
 
         public void ChangeActiveSpellByIndexChange(int indexChange)
         {
@@ -22,24 +34,17 @@ namespace MageDefence
             ActiveSpell = Spells[ActiveSpellIndex];
         }
         
-        public void LoadLibrary(string path)
+        public void LoadNewLibrary(string path)
         {
-            if (string.IsNullOrEmpty(path))
+            if (_resourceLoader == null)
             {
-                path = DefaultResourcePath;
-            }
-            Spells.Clear();
-            var loadedSpells = Resources.LoadAll<Spell>(path);
-            
-            
-            if (loadedSpells.Length == 0)
-            {
-                Debug.LogWarning($"No spells found at path: {path}");
+                Debug.LogError("resourceLoader is null");
                 return;
             }
             
-            Spells.AddRange(loadedSpells);
-            ActiveSpell = Spells[ActiveSpellIndex];
+            Spells.Clear();
+            Spells.AddRange(_resourceLoader.GetSpells(path));
+            ActiveSpell = Spells[0];
         }
     }
 }

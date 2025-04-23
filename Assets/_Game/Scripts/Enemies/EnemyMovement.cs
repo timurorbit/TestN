@@ -6,15 +6,11 @@ namespace MageDefence
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyMovement : MonoBehaviour
     {
+        [SerializeField]
         private NavMeshAgent _agent;
         private Transform _target;
         private const float _targetUpdateFrequency = 0.5f;
         private float _moveSpeed = 5f;
-
-        void Awake()
-        {
-            _agent = GetComponent<NavMeshAgent>();
-        }
 
         private void Start()
         {

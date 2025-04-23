@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using MageDefence;
 using UniRx;
@@ -12,18 +11,20 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemySO> _enemyPool;
 
     [SerializeField] private Transform[] _spawnPoints;
-    private readonly List<GameObject> _activeEnemies = new();
+
     [FormerlySerializedAs("maxEnemies")] [SerializeField]
     private int _maxEnemies;
 
-    private EnemyFactory _enemyFactory;
+
+    private readonly List<GameObject> _activeEnemies = new();
     private EnemySpawnerConfig _spawnerConfig;
+    private ITargetLocator _targetLocator;
     
     [Inject]
-    public void Construct([Inject(Optional = true)]EnemySpawnerConfig spawnerConfig, EnemyFactory enemyFactory)
+    public void Construct(EnemySpawnerConfig spawnerConfig, [Inject(Id = "PlayerLocator")]ITargetLocator targetLocator)
     {
         _spawnerConfig = spawnerConfig;
-        _enemyFactory = enemyFactory;
+        _targetLocator = targetLocator;
     }
 
     private void Awake()
@@ -34,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         if (_spawnerConfig)
         {
@@ -55,20 +56,36 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        EnemySO enemyData = _enemyPool[Random.Range(0, _enemyPool.Count)];
-        GameObject enemy = _enemyFactory.Create(enemyData);
+        var enemyData = _enemyPool[Random.Range(0, _enemyPool.Count)];
+        var enemy = CreateEnemyFromData(enemyData);
         enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
-
         _activeEnemies.Add(enemy);
+    }
 
-        var health = enemy.GetComponent<Health>();
-        if (health)
+    private GameObject CreateEnemyFromData(EnemySO enemyData)
+    {
+        var enemyInstance = Instantiate(enemyData.prefab);
+        
+        if (enemyInstance.TryGetComponent<EnemyMovement>(out var movement))
         {
+            var target = _targetLocator.GetTarget(enemyInstance.transform.position);
+            movement.Initialize(enemyData.speed, target);
+        }
+
+        if (enemyInstance.TryGetComponent<Health>(out var health))
+        {
+            health.Initialize(enemyData.health, enemyData.armor);
             health.OnDeathObservable
                 .Take(1)
                 .Subscribe(_ => HandleEnemyDeath(health))
                 .AddTo(this);
         }
+
+        if (enemyInstance.TryGetComponent<DamagerImplementation>(out var damager))
+        {
+          damager.Initialize(enemyData.damage, false);  
+        }
+        return enemyInstance;
     }
 
     private void HandleEnemyDeath(Health health)

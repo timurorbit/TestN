@@ -203,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4605f80a517558a4b83c6baef0770915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   armor: 0
 --- !u!114 &2799488376471288781
 MonoBehaviour:
@@ -217,9 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ffecc355b9a3e47be0e3867a00e396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetUpdateFrequency: 0.25
-  moveSpeed: 5
+  _agent: {fileID: 1452863425536821494}
 --- !u!114 &458843826326840264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,4 +230,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  destroyOnHit: 0

@@ -6,34 +6,19 @@ namespace MageDefence
 {
     public class Health : MonoBehaviour, IDamageable
     {
+        [Range(0f, 1f)] public float armor;
+        
         private float currentHealth = 100f;
         private float maxHealth = 100f;
 
-        [Range(0f, 1f)] public float armor;
 
         private Subject<IDamageable> _onDeath = new();
         public IObservable<IDamageable> OnDeathObservable => _onDeath;
-
-        private void Awake()
-        {
-            currentHealth = maxHealth;
-        }
 
         public virtual void Initialize(float dataHealth, float dataArmor)
         {
             SetMaxHealth(dataHealth);
             armor = dataArmor;
-        }
-
-        private void SetMaxHealth(float health)
-        {
-            if (health <= 0)
-            {
-                Debug.Log($"Invalid max health value: {health}.");
-            }
-
-            maxHealth = health;
-            currentHealth = health;
         }
 
         public virtual void TakeDamage(float damage)
@@ -48,7 +33,18 @@ namespace MageDefence
             }
         }
 
-        public void Die()
+        private void SetMaxHealth(float health)
+        {
+            if (health <= 0)
+            {
+                Debug.Log($"Invalid max health value: {health}.");
+            }
+
+            maxHealth = health;
+            currentHealth = health;
+        }
+
+        private void Die()
         {
             Debug.Log("Died");
             _onDeath.OnNext(this);

@@ -28,20 +28,12 @@ namespace MageDefence
 
         private void Start()
         {
-            _spellLibrary.LoadLibrary();
+            _spellLibrary.LoadNewLibrary();
         }
 
         private void Update()
         {
             UpdateCooldown();
-        }
-
-        private void UpdateCooldown()
-        {
-            if (_cooldownTimer > 0)
-            {
-                _cooldownTimer -= Time.deltaTime;
-            }
         }
 
         public void CastSpell()
@@ -58,7 +50,21 @@ namespace MageDefence
             _cooldownTimer = _spellLibrary.ActiveSpell.cooldown;
         }
 
+        public void ChangeSpell(int indexChange)
+        {
+            _spellLibrary.ChangeActiveSpellByIndexChange(indexChange);
+        }
+
+        private void UpdateCooldown()
+        {
+            if (_cooldownTimer > 0)
+            {
+                _cooldownTimer -= Time.deltaTime;
+            }
+        }
+
         //todo Pooling
+
         private void SpawnSpell(Spell spell)
         {
             if (!spell || !spell.projectilePrefab)
@@ -68,29 +74,21 @@ namespace MageDefence
 
             var spellInstance =
                 Instantiate(spell.projectilePrefab, _spellSpawnOffset.position, _spellSpawnOffset.rotation);
-
-            ProjectileMovement movement = spellInstance.GetComponent<ProjectileMovement>();
-            if (movement)
+            
+            if (spellInstance.TryGetComponent<ProjectileMovement>(out var movement))
             {
                 movement.Initialize(spell.projectileSpeed);
             }
-
-            DamageOnTrigger damage = spellInstance.GetComponent<DamageOnTrigger>();
-            if (damage)
+            
+            if (spellInstance.TryGetComponent<DamageOnTrigger>(out var damage))
             {
                 damage.Initialize(spell.damage, true);
             }
-
-            SelfDestruct destruct = spellInstance.GetComponent<SelfDestruct>();
-            if (destruct)
+            
+            if (spellInstance.TryGetComponent<SelfDestruct>(out var destruct))
             {
                 destruct.Initialize(spell.lifetime);
             }
-        }
-
-        public void ChangeSpell(int indexChange)
-        {
-            _spellLibrary.ChangeActiveSpellByIndexChange(indexChange);
         }
     }
 }
