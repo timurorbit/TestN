@@ -1,7 +1,9 @@
 # MageDefence Unity Project
 
 MageDefence is a Unity-based test project. The concept is simple: a mage defends against monsters. The project emphasizes good programming practices and reliable code, focusing on extensibility and maintainability.
-![image](https://github.com/user-attachments/assets/c13c3012-7e79-49a5-a358-b12d9b9d4132)
+![sleekshot](https://github.com/user-attachments/assets/cd475c06-23b3-4785-91b1-2a70ec319ef2)
+
+
 
 ---
 
